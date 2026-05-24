@@ -1,0 +1,24 @@
+{
+  "adminConfig": {
+    "canPost": true,
+    "role": "Yönetici"
+  },
+  "posts": [
+    {
+      "id": 1,
+      "title": "İlk Blog Yazısı",
+      "content": "Bu web sitesi Montserrat yazı tipi ve koyu yeşil tonlarıyla tasarlandı.",
+      "date": "11 Mayıs 2026",
+      "downloadLink": "#",
+      "fileName": "kaynak-kod.zip"
+    },
+    {
+      "id": 2,
+      "title": "Modern Arayüz Tasarımı",
+      "content": "Koyu mod ve yumuşak geçiş efektleri kullanıcı deneyimini artırır.",
+      "date": "10 Mayıs 2026",
+      "downloadLink": "#",
+      "fileName": "rehber.pdf"
+    }
+  ]
+}
