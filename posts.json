@@ -26,6 +26,13 @@
       "content": "bu post githubta atılan ilk posttur site halka açılmıştır hayırlı olsun",
       "date": "24 Mayıs 2026",
       "fileName": ""
+    },
+    {
+      "id": 4,
+      "title": "indirilebilir dosya deneme",
+      "content": "bu post indirilebilir dosya deneme içindir",
+      "date": "24 Mayıs 2026",
+      "fileName": "image.png"
     }
   ]
 }
