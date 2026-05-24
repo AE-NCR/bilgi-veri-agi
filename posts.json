@@ -19,14 +19,14 @@
       "date": "10 Mayıs 2026",
       "downloadLink": "#",
       "fileName": "rehber.pdf"
-    }
-
+    },
     {
-      "id":3,
+      "id": 3,
       "title": "github yayın deneme #1",
       "content": "bu post githubta atılan ilk posttur site halka açılmıştır hayırlı olsun",
       "date": "24 Mayıs 2026",
       "downloadLink": "#",
-    
+      "fileName": ""
+    }
   ]
 }
