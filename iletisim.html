@@ -9,8 +9,8 @@
         :root {
             --bg-color: #0a0f0d;
             --card-bg: #121a16;
-            --primary: #1b5e20; /* Koyu Yeşil */
-            --secondary: #0288d1; /* Mavi */
+            --primary: #1b5e20;
+            --secondary: #0288d1;
             --text-main: #ffffff;
             --text-dim: #b0bec5;
             --transition: all 0.4s ease;
@@ -26,7 +26,6 @@
             overflow-x: hidden;
         }
 
-        /* Navbar & Hamburger */
         nav {
             background: rgba(10, 15, 13, 0.95);
             padding: 1rem 5%;
@@ -51,14 +50,14 @@
             transition: var(--transition);
         }
         .nav-links a:hover { color: var(--secondary); }
+        .nav-links .active-link { color: var(--primary); font-weight: 700; }
 
         .hamburger { display: none; cursor: pointer; font-size: 1.8rem; }
 
-        /* Main Content Düzeni */
         main { 
             margin-top: 120px; 
             padding: 2rem 5%; 
-            max-width: 800px; /* Okunabilirlik için içeriği biraz daralttık */
+            max-width: 800px; 
             margin-left: auto; 
             margin-right: auto; 
         }
@@ -70,13 +69,12 @@
             padding-left: 15px; 
         }
 
-        /* Hakkında ve İletişim Kutuları */
         .info-card {
             background: var(--card-bg);
             padding: 2rem;
             border-radius: 12px;
             border: 1px solid #1a2e23;
-            margin-bottom: 2.5rem; /* İki bölüm arası boşluk */
+            margin-bottom: 2.5rem; 
             transition: var(--transition);
         }
 
@@ -90,7 +88,6 @@
             font-size: 1.05rem;
         }
 
-        /* İletişim Satırları Düzeni */
         .contact-method {
             margin-top: 15px;
             font-size: 1.05rem;
@@ -111,7 +108,6 @@
             color: var(--secondary);
         }
 
-        /* Mobile View (Birebir index.html ile aynı mobil uyum) */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -123,7 +119,7 @@
                 text-align: center;
             }
             .nav-links.active { display: flex; }
-            .nav-links li { margin: 1rem 0; }
+            .nav-links li { margin: 1rem 0; margin-left: 0; }
             .hamburger { display: block; }
         }
     </style>
@@ -134,10 +130,9 @@
         <div class="logo">Bilgi-Veri Ağı</div>
         <div class="hamburger" id="hamburger">☰</div>
         <ul class="nav-links" id="nav-links">
-            <li><a href="index.html">Ana sayfa</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">İçerik</a></li>
-            <li><a href="iletisim.html">Hakkında && İletişim</a></li>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="iletisim.html" class="active-link">Hakkında & İletişim</a></li>
         </ul>
     </nav>
 
