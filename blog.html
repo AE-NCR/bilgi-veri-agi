@@ -58,6 +58,30 @@
 
         .section-title { font-weight: 700; margin-bottom: 2rem; border-left: 5px solid var(--primary); padding-left: 15px; }
 
+        /* Arama Kutusu Alanı Stili */
+        .search-container {
+            margin-bottom: 2rem;
+            max-width: 400px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid #1a2e23;
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 12px rgba(2, 136, 209, 0.3);
+        }
+
         .blog-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
 
         .post-card {
@@ -123,6 +147,11 @@
 
     <main>
         <h2 class="section-title">Son Paylaşımlar ve Dosyalar</h2>
+        
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Başlıklarda ara...">
+        </div>
+
         <div id="blog-wrapper" class="blog-container"></div>
     </main>
 
