@@ -39,22 +39,7 @@
             border-bottom: 1px solid var(--primary);
         }
 
-        /* Logo Alanı Stili */
-        .logo { 
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo a {
-            display: block;
-            text-decoration: none;
-        }
-
-        .logo-img {
-            height: 45px; /* Logonun menüdeki yüksekliği */
-            display: block;
-            object-fit: contain;
-        }
+        .logo { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
 
         .nav-links { display: flex; list-style: none; }
         .nav-links li { margin-left: 25px; }
@@ -70,6 +55,24 @@
         .hamburger { display: none; cursor: pointer; font-size: 1.8rem; }
 
         main { margin-top: 130px; padding: 2rem 5%; max-width: 1200px; margin-left: auto; margin-right: auto; }
+
+        /* Ana Sayfadaki Özel Logo Alanı */
+        .home-logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 3rem; /* Başlıkla arasında boşluk bırakır */
+            width: 100%;
+        }
+
+        .home-logo-img {
+            max-width: 250px; /* Logonun büyüklüğünü buradan ayarlayabilirsin */
+            height: auto;
+            display: block;
+            object-fit: contain;
+            /* Hafif bir parlama efekti vererek şık durmasını sağlar */
+            filter: drop-shadow(0 0 15px rgba(27, 94, 32, 0.2)); 
+        }
 
         .section-title { font-weight: 700; margin-bottom: 2rem; border-left: 5px solid var(--primary); padding-left: 15px; }
 
@@ -121,17 +124,14 @@
             .nav-links.active { display: flex; }
             .nav-links li { margin: 1rem 0; margin-left: 0; }
             .hamburger { display: block; }
+            .home-logo-img { max-width: 180px; } /* Mobilde logo biraz küçülür */
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">
-            <a href="index.html">
-                <img src="logo.png" alt="Bilgi-Veri Ağı" class="logo-img">
-            </a>
-        </div>
+        <div class="logo">Bilgi-Veri Ağı</div>
         <div class="hamburger" id="hamburger">☰</div>
         <ul class="nav-links" id="nav-links">
             <li><a href="index.html" class="active-link">Ana sayfa</a></li>
@@ -141,6 +141,10 @@
     </nav>
 
     <main>
+        <div class="home-logo-container">
+            <img src="logo.png" alt="Bilgi-Veri Ağı Logo" class="home-logo-img">
+        </div>
+
         <h2 class="section-title">Son Paylaşımlar ve Dosyalar</h2>
         <div id="blog-wrapper" class="blog-container"></div>
     </main>
