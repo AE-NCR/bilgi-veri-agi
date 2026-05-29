@@ -3,12 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
 
+    // Hamburger Menü Kontrolü
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
     }
 
+    // JSON Verisini Çekme ve Listeleme (Sadece blog sayfasındaysa çalışır)
     if (blogWrapper) {
         fetch('posts.json')
             .then(response => response.json())
@@ -33,13 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.classList.add('visible');
             }, index * 200);
 
-            const downloadButtonText = post.fileName ? `📁 ${post.fileName} İndir` : "🔗 Bağlantıya Git";
+            // Eğer indirme linki boşsa veya # ise farklı buton metni göster
+            const isLinkValid = post.downloadLink && post.downloadLink !== "#";
+            const buttonText = isLinkValid ? `📁 ${post.fileName} İndir` : "🔗 Bağlantı Yok (Test)";
 
             card.innerHTML = `
                 <h3>${post.title}</h3>
                 <p>${post.content}</p>
                 <small style="display:block; margin-bottom:15px; color:#555;">${post.date}</small>
-                <a href="${post.downloadLink}" class="btn-download" target="_blank">${downloadButtonText}</a>
+                <a href="${post.downloadLink}" class="btn-download" ${isLinkValid ? 'target="_blank"' : ''}>${buttonText}</a>
             `;
             blogWrapper.appendChild(card);
         });
