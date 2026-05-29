@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Eğer indirme linki boşsa veya # ise farklı buton metni göster
             const isLinkValid = post.downloadLink && post.downloadLink !== "#";
-            const buttonText = isLinkValid ? `📁 ${post.fileName} İndir` : "🔗 Bağlantı Yok (Test)";
+            const buttonText = isLinkValid ? `📁 ${post.fileName} İndir` : "🔗 İndirme bağlantısı bulunmamaktadır.";
 
             card.innerHTML = `
                 <h3>${post.title}</h3>
