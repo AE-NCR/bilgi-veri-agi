@@ -23,9 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Arama kutusuna her harf girildiğinde çalışacak alan
                     if (searchInput) {
                         searchInput.addEventListener('input', (e) => {
+                            // Aranan kelimeyi tamamen küçük harfe çeviriyoruz
                             const searchTerm = e.target.value.toLowerCase().trim();
                             
-                            // Postları başlığa (title) göre süzüyoruz
+                            // Postları süzüyoruz (Hem başlığı hem aranan kelimeyi küçük harfe çevirerek eşleştiriyoruz)
                             const filteredPosts = data.posts.filter(post => 
                                 post.title.toLowerCase().includes(searchTerm)
                             );
