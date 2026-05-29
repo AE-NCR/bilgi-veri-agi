@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bilgi-Veri Ağı - Ana Sayfa</title>
+    <title>Bilgi-Veri Ağı</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
     <style>
         :root {
@@ -39,7 +39,22 @@
             border-bottom: 1px solid var(--primary);
         }
 
-        .logo { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
+        /* Logo Alanı Stili */
+        .logo { 
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo a {
+            display: block;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 45px; /* Logonun menüdeki yüksekliği */
+            display: block;
+            object-fit: contain;
+        }
 
         .nav-links { display: flex; list-style: none; }
         .nav-links li { margin-left: 25px; }
@@ -54,77 +69,44 @@
 
         .hamburger { display: none; cursor: pointer; font-size: 1.8rem; }
 
-        main { margin-top: 130px; padding: 2rem 5%; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        main { margin-top: 130px; padding: 2rem 5%; max-width: 1200px; margin-left: auto; margin-right: auto; }
 
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: radial-gradient(circle at top, #122216 0%, var(--bg-color) 70%);
-            border-radius: 16px;
-            border: 1px solid #1a2e23;
-            margin-bottom: 3rem;
-        }
+        .section-title { font-weight: 700; margin-bottom: 2rem; border-left: 5px solid var(--primary); padding-left: 15px; }
 
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 1rem;
-        }
-        .hero h1 span { color: var(--secondary); }
+        .blog-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
 
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-dim);
-            max-width: 700px;
-            margin: 0 auto 2rem auto;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: var(--transition);
-            border: 1px solid transparent;
-        }
-        .btn-primary:hover {
-            background: transparent;
-            border-color: var(--secondary);
-            color: var(--secondary);
-            box-shadow: 0 0 15px rgba(2, 136, 209, 0.4);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .feature-card {
+        .post-card {
             background: var(--card-bg);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 12px;
             border: 1px solid #1a2e23;
             transition: var(--transition);
+            opacity: 0; transform: translateY(20px);
         }
-        .feature-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
+
+        .post-card.visible { opacity: 1; transform: translateY(0); }
+
+        .post-card:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transform: scale(1.02);
         }
-        .feature-card h3 {
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-            font-weight: 700;
+
+        .post-card h3 { font-weight: 700; margin-bottom: 0.5rem; color: var(--primary); }
+        .post-card p { color: var(--text-dim); margin-bottom: 1rem; }
+
+        .btn-download {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
         }
-        .feature-card p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-        }
+
+        .btn-download:hover { background: var(--secondary); }
 
         @media (max-width: 768px) {
             .nav-links {
@@ -139,14 +121,17 @@
             .nav-links.active { display: flex; }
             .nav-links li { margin: 1rem 0; margin-left: 0; }
             .hamburger { display: block; }
-            .hero h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">Bilgi-Veri Ağı</div>
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="Bilgi-Veri Ağı" class="logo-img">
+            </a>
+        </div>
         <div class="hamburger" id="hamburger">☰</div>
         <ul class="nav-links" id="nav-links">
             <li><a href="index.html" class="active-link">Ana sayfa</a></li>
@@ -156,26 +141,8 @@
     </nav>
 
     <main>
-        <section class="hero">
-            <h1>Bilgi ve Veri Akışının <span>Modern Yolu</span></h1>
-            <p>Bilgi-Veri Ağı, tek yönlü dosya, kaynak kod, rehber ve güvenli veri aktarımı sağlamak amacıyla tasarlanmış açık kaynaklı bir platformdur.</p>
-            <a href="blog.html" class="btn-primary">Paylaşılan Dosyaları Gör 📁</a>
-        </section>
-
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>⚡ Hızlı Erişim</h3>
-                <p>İhtiyacınız olan resim,video,albüm ve dosyalara doğrudan ve kesintisiz bir şekilde ulaşın.</p>
-            </div>
-            <div class="feature-card">
-                <h3>🎨 Modern Arayüz</h3>
-                <p>Montserrat yazı tipi, göz yormayan koyu yeşil tonları, yumuşak geçiş efektleri ve karanlık modla optimize edilmiş kullanıcı deneyimi.</p>
-            </div>
-            <div class="feature-card">
-                <h3>🔒 Güvenli Paylaşım</h3>
-                <p>Paylaşılan tüm arşivler ve dijital varlıklar virüs taramasından geçirilerek güvenli bağlantılarla sunulur.</p>
-            </div>
-        </div>
+        <h2 class="section-title">Son Paylaşımlar ve Dosyalar</h2>
+        <div id="blog-wrapper" class="blog-container"></div>
     </main>
 
     <script src="main.js"></script>
