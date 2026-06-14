@@ -9,6 +9,7 @@
       "title": "İlk Blog Yazısı",
       "content": "Bu web sitesi Montserrat yazı tipi ve koyu yeşil tonlarıyla tasarlandı.",
       "date": "11 Mayıs 2026",
+      "active": false,
       "downloadLink": "#",
       "fileName": "kaynak-kod.zip"
     },
@@ -17,6 +18,7 @@
       "title": "Modern Arayüz Tasarımı",
       "content": "Koyu mod ve yumuşak geçiş efektleri kullanıcı deneyimini artırır.",
       "date": "10 Mayıs 2026",
+      "active": false,
       "downloadLink": "#",
       "fileName": "rehber.pdf"
     },
@@ -25,6 +27,7 @@
       "title": "github yayın deneme #1",
       "content": "bu post githubta atılan ilk posttur site halka açılmıştır hayırlı olsun",
       "date": "24 Mayıs 2026",
+      "active": false,
       "downloadLink": "#",
       "fileName": ""
     },
@@ -33,6 +36,7 @@
       "title": "Liminal spaces fotoğraf albüm 1",
       "content": "Özellikler/ Açıklama:Liminal spaces foto albümü Boyut:5,6 mb Güvenlik: Virüs bulunmamaktadır",
       "date": "24 Mayıs 2026",
+      "active": true,
       "downloadLink": "https://drive.google.com/uc?export=download&id=1FfCos0yPWrrxOFipbvKy1DQyQTFqnR1f",
       "fileName": "liminal-spaces.zip"
     },
@@ -41,6 +45,7 @@
       "title": "beta-2 sürümü hayırlı olsun",
       "content": "beta-2 sürümü bugün akşam yayınlanmıştır halka hayırlı uğurlu olsun",
       "date": "29 Mayıs 2026",
+      "active": false,
       "downloadLink": "#",
       "fileName": ""
     }
