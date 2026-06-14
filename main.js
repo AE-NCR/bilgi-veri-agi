@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             const searchTerm = e.target.value.toLowerCase().trim();
                             
                             // Postları süzüyoruz (Hem başlığı hem aranan kelimeyi küçük harfe çevirerek eşleştiriyoruz)
-                            const filteredPosts = data.posts.filter(post => 
+                            const filteredPosts = data.indir.filter(post => 
                                 post.title.toLowerCase().includes(searchTerm)
                             );
                             
