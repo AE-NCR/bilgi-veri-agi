@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // JSON Verisini Çekme ve Listeleme
     if (blogWrapper) {
-        fetch('posts.json')
+        fetch('indir.json')
             .then(response => response.json())
             .then(data => {
                 if(data.adminConfig.canPost) {
