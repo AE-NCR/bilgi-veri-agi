@@ -2,39 +2,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const blogWrapper = document.getElementById('blog-wrapper');
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
-    const searchInput = document.getElementById('search-input'); // Arama kutusu bağlantısı
+    const searchInput = document.getElementById('search-input');
 
-    // Hamburger Menü Kontrolü
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
     }
 
-    // JSON Verisini Çekme ve Listeleme
     if (blogWrapper) {
         fetch('indir.json')
             .then(response => response.json())
             .then(data => {
                 if(data.adminConfig.canPost) {
-                    // Sayfa ilk açıldığında tüm postları listele
-                    renderPosts(data.indir);
+                    // Sadece aktif olanları listele
+                    const activePosts = data.indir.filter(post => post.active !== false);
+                    renderPosts(activePosts);
                     
-                    // Arama kutusuna her harf girildiğinde çalışacak alan
                     if (searchInput) {
                         searchInput.addEventListener('input', (e) => {
-                            // Aranan kelimeyi tamamen küçük harfe çeviriyoruz
                             const searchTerm = e.target.value.toLowerCase().trim();
                             
-                            // Postları süzüyoruz (Hem başlığı hem aranan kelimeyi küçük harfe çevirerek eşleştiriyoruz)
+                            // Arama yaparken de sadece aktif olanlar içinden ara
                             const filteredPosts = data.indir.filter(post => 
+                                post.active !== false && 
                                 post.title.toLowerCase().includes(searchTerm)
                             );
                             
-                            // Mevcut listeyi temizle
                             blogWrapper.innerHTML = "";
-                            
-                            // Sonuç varsa yazdır, yoksa uyarı mesajı ver
                             if (filteredPosts.length > 0) {
                                 renderPosts(filteredPosts);
                             } else {
@@ -57,12 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('div');
             card.className = 'post-card';
             
-            // Kartların ekrana yumuşak gelme animasyonu süresi
             setTimeout(() => {
                 card.classList.add('visible');
             }, index * 150);
 
-            // Eğer indirme linki boşsa veya # ise farklı buton metni göster
             const isLinkValid = post.downloadLink && post.downloadLink !== "#";
             const buttonText = isLinkValid ? `📁 ${post.fileName} İndir` : "🔗 İndirme bağlantısı bulunmamaktadır.";
 
