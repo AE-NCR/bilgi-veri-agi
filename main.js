@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (blogWrapper) {
-        fetch('indir.json')
+        // ÖNEMLİ: ?t=... ekleyerek tarayıcı önbelleğini devre dışı bıraktık
+        fetch('indir.json?t=' + new Date().getTime())
             .then(response => response.json())
             .then(data => {
                 if(data.adminConfig.canPost) {
-                    // Sadece aktif olanları listele
                     const activePosts = data.indir.filter(post => post.active !== false);
                     renderPosts(activePosts);
                     
@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         searchInput.addEventListener('input', (e) => {
                             const searchTerm = e.target.value.toLowerCase().trim();
                             
-                            // Arama yaparken de sadece aktif olanlar içinden ara
                             const filteredPosts = data.indir.filter(post => 
                                 post.active !== false && 
                                 post.title.toLowerCase().includes(searchTerm)
