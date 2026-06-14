@@ -3,7 +3,7 @@
     "canPost": true,
     "role": "Yönetici"
   },
-  "posts": [
+  "indir": [
     {
       "id": 2,
       "title": "İlk Blog Yazısı",
