@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 if(data.adminConfig.canPost) {
                     // Sayfa ilk açıldığında tüm postları listele
-                    renderPosts(data.posts);
+                    renderPosts(data.indir);
                     
                     // Arama kutusuna her harf girildiğinde çalışacak alan
                     if (searchInput) {
