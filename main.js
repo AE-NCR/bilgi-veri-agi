@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const blogWrapper = document.getElementById('blog-wrapper');
+    const videoContainer = document.getElementById('video-container'); // Videolar için eklendi
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
     const searchInput = document.getElementById('search-input');
@@ -10,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- MEVCUT İNDİRMELER KODU ---
     if (blogWrapper) {
-        // ÖNEMLİ: ?t=... ekleyerek tarayıcı önbelleğini devre dışı bıraktık
         fetch('indir.json?t=' + new Date().getTime())
             .then(response => response.json())
             .then(data => {
@@ -22,12 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (searchInput) {
                         searchInput.addEventListener('input', (e) => {
                             const searchTerm = e.target.value.toLowerCase().trim();
-                            
                             const filteredPosts = data.indir.filter(post => 
                                 post.active !== false && 
                                 post.title.toLowerCase().includes(searchTerm)
                             );
-                            
                             blogWrapper.innerHTML = "";
                             if (filteredPosts.length > 0) {
                                 renderPosts(filteredPosts);
@@ -46,18 +45,31 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
+    // --- YENİ VİDEO SİSTEMİ KODU ---
+    if (videoContainer) {
+        fetch('videos.json?t=' + new Date().getTime())
+            .then(response => response.json())
+            .then(data => {
+                renderVideos(data);
+                window.filterVideos = (category) => {
+                    const filtered = category === 'Hepsi' ? data : data.filter(v => v.category === category);
+                    videoContainer.innerHTML = "";
+                    renderVideos(filtered);
+                };
+            })
+            .catch(err => {
+                console.error("Video yüklenemedi:", err);
+                videoContainer.innerHTML = "<p>Videolar şu an yüklenemiyor.</p>";
+            });
+    }
+
     function renderPosts(posts) {
         posts.forEach((post, index) => {
             const card = document.createElement('div');
             card.className = 'post-card';
-            
-            setTimeout(() => {
-                card.classList.add('visible');
-            }, index * 150);
-
+            setTimeout(() => { card.classList.add('visible'); }, index * 150);
             const isLinkValid = post.downloadLink && post.downloadLink !== "#";
             const buttonText = isLinkValid ? `📁 ${post.fileName} İndir` : "🔗 İndirme bağlantısı bulunmamaktadır.";
-
             card.innerHTML = `
                 <h3>${post.title}</h3>
                 <p>${post.content}</p>
@@ -65,6 +77,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 <a href="${post.downloadLink}" class="btn-download" ${isLinkValid ? 'target="_blank"' : ''}>${buttonText}</a>
             `;
             blogWrapper.appendChild(card);
+        });
+    }
+
+    function renderVideos(videos) {
+        videos.forEach((video, index) => {
+            const card = document.createElement('div');
+            card.className = 'feature-card';
+            card.style.opacity = '0';
+            card.style.transition = 'opacity 0.5s ease';
+            card.innerHTML = `
+                <h3>${video.title}</h3>
+                <iframe src="${video.link}" width="100%" height="250" frameborder="0" allowfullscreen></iframe>
+            `;
+            videoContainer.appendChild(card);
+            setTimeout(() => { card.style.opacity = '1'; }, index * 100);
         });
     }
 });
