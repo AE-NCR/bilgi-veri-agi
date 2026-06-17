@@ -1,8 +1,18 @@
-<main>
-    <div class="filters" style="text-align: center; margin-bottom: 2rem;">
-        <button onclick="filterVideos('Hepsi')">Hepsi</button>
-        <button onclick="filterVideos('Meme')">Meme</button>
-    </div>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    </head>
+<body>
+    <main>
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <button onclick="filterVideos('Hepsi')" class="btn-primary">Hepsi</button>
+            <button onclick="filterVideos('Tarih')" class="btn-primary">Tarih</button>
+            <button onclick="filterVideos('Meme')" class="btn-primary">Meme</button>
+        </div>
 
-    <div id="video-container" class="features-grid"></div>
-</main>
+        <div id="video-container" class="features-grid"></div>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>
