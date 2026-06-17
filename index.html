@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bilgi-Veri Ağı - Ana Sayfa</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+    
     <style>
         :root {
             --bg-color: #0a0f0d;
@@ -43,12 +47,19 @@
 
         .nav-links { display: flex; list-style: none; }
         .nav-links li { margin-left: 25px; }
+        
         .nav-links a {
             text-decoration: none;
             color: var(--text-main);
             font-weight: 400;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
         }
+        
+        /* Simge boşluk ayarı */
+        .nav-links a i { margin-right: 8px; font-size: 0.9rem; }
+
         .nav-links a:hover { color: var(--secondary); }
         .nav-links .active-link { color: var(--primary); font-weight: 700; }
 
@@ -56,21 +67,15 @@
 
         main { margin-top: 130px; padding: 2rem 5%; max-width: 1000px; margin-left: auto; margin-right: auto; }
 
-        /* Sadece Logonun Duracağı Alanın Stili */
         .brand-logo-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 2rem; /* Hero alanı ile aradaki boşluk */
+            margin-bottom: 2rem;
             width: 100%;
         }
 
-        .brand-logo-img {
-            max-width: 220px; /* Logonun büyüklüğünü buradan değiştirebilirsin */
-            height: auto;
-            display: block;
-            object-fit: contain;
-        }
+        .brand-logo-img { max-width: 220px; height: auto; }
 
         .hero {
             text-align: center;
@@ -81,20 +86,10 @@
             margin-bottom: 3rem;
         }
 
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 1rem;
-        }
+        .hero h1 { font-size: 2.5rem; font-weight: 700; color: var(--text-main); margin-bottom: 1rem; }
         .hero h1 span { color: var(--secondary); }
 
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-dim);
-            max-width: 700px;
-            margin: 0 auto 2rem auto;
-        }
+        .hero p { font-size: 1.1rem; color: var(--text-dim); max-width: 700px; margin: 0 auto 2rem auto; }
 
         .btn-primary {
             display: inline-block;
@@ -105,42 +100,23 @@
             text-decoration: none;
             font-weight: 700;
             transition: var(--transition);
-            border: 1px solid transparent;
         }
+        
         .btn-primary:hover {
             background: transparent;
-            border-color: var(--secondary);
+            border: 1px solid var(--secondary);
             color: var(--secondary);
-            box-shadow: 0 0 15px rgba(2, 136, 209, 0.4);
         }
 
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
-        .feature-card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid #1a2e23;
-            transition: var(--transition);
-        }
-        .feature-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-        }
-        .feature-card h3 {
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-            font-weight: 700;
-        }
-        .feature-card p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-        }
+        .feature-card { background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid #1a2e23; }
+        .feature-card h3 { color: var(--primary); margin-bottom: 0.8rem; }
+        .feature-card p { color: var(--text-dim); }
 
         @media (max-width: 768px) {
             .nav-links {
@@ -150,13 +126,10 @@
                 top: 100%; left: 0; width: 100%;
                 background: var(--bg-color);
                 padding: 2rem;
-                text-align: center;
             }
             .nav-links.active { display: flex; }
-            .nav-links li { margin: 1rem 0; margin-left: 0; }
+            .nav-links li { margin: 1rem 0; }
             .hamburger { display: block; }
-            .hero h1 { font-size: 1.8rem; }
-            .brand-logo-img { max-width: 160px; } /* Mobilde logo biraz küçülür */
         }
     </style>
 </head>
@@ -166,9 +139,9 @@
         <div class="logo">Bilgi-Veri Ağı</div>
         <div class="hamburger" id="hamburger">☰</div>
         <ul class="nav-links" id="nav-links">
-            <li><a href="index.html" class="active-link">Ana sayfa</a></li>
-            <li><a href="indir.html">İndirmeler</a></li>
-            <li><a href="iletisim.html">Hakkında && İletişim</a></li>
+            <li><a href="index.html" class="active-link"><i class="fa-solid fa-house"></i> Ana sayfa</a></li>
+            <li><a href="indir.html"><i class="fa-solid fa-download"></i> İndirmeler</a></li>
+            <li><a href="iletisim.html"><i class="fa-solid fa-circle-info"></i> Hakkında && İletişim</a></li>
         </ul>
     </nav>
 
@@ -186,15 +159,15 @@
         <div class="features-grid">
             <div class="feature-card">
                 <h3>⚡ Hızlı Erişim</h3>
-                <p>İhtiyacınız olan dosyalara,resimlere,videolara,müziklere,albümlere ve daha fazlasına doğrudan ve kesintisiz bir şekilde ulaşın.</p>
+                <p>İhtiyacınız olan dosyalara doğrudan ve kesintisiz bir şekilde ulaşın.</p>
             </div>
             <div class="feature-card">
                 <h3>🎨 Modern Arayüz</h3>
-                <p>Montserrat yazı tipi , göz yormayan koyu yeşil tonları,yumuşak geçiş efektleri ve varsayılan karanlık modu ile optimize edilmiş kullanıcı deneyimi.</p>
+                <p>Göz yormayan koyu yeşil tonları ve modern tasarım.</p>
             </div>
             <div class="feature-card">
                 <h3>🔒 Güvenli Paylaşım</h3>
-                <p>Paylaşılan tüm arşivler ve dijital varlıklar virüs taramasından geçirilerek güvenli bağlantılarla sunulur.</p>
+                <p>Paylaşılan tüm varlıklar güvenlik taramasından geçirilir.</p>
             </div>
         </div>
     </main>
