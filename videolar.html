@@ -1,10 +1,8 @@
 <main>
     <div class="filters" style="text-align: center; margin-bottom: 2rem;">
-        <button onclick="renderVideos('Hepsi')" class="btn-primary">Hepsi</button>
-        <button onclick="renderVideos('Tarih')" class="btn-primary">Tarih</button>
-        <button onclick="renderVideos('Meme')" class="btn-primary">Meme</button>
+        <button onclick="filterVideos('Hepsi')">Hepsi</button>
+        <button onclick="filterVideos('Meme')">Meme</button>
     </div>
 
-    <div id="video-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-        </div>
+    <div id="video-container" class="features-grid"></div>
 </main>
