@@ -6,7 +6,6 @@
     <title>Bilgi-Veri Ağı - Ana Sayfa</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
     
     <style>
@@ -46,7 +45,7 @@
         .logo { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
 
         .nav-links { display: flex; list-style: none; }
-        .nav-links li { margin-left: 25px; }
+        .nav-links li { margin-left: 20px; } /* Boşluğu biraz kıstık */
         
         .nav-links a {
             text-decoration: none;
@@ -55,9 +54,11 @@
             transition: var(--transition);
             display: flex;
             align-items: center;
+            font-size: 0.95rem; /* Yazı boyutunu biraz küçülttük */
         }
         
-        .nav-links a i { margin-right: 8px; font-size: 0.9rem; }
+        .nav-links a i { margin-right: 6px; font-size: 0.9rem; }
+
         .nav-links a:hover { color: var(--secondary); }
         .nav-links .active-link { color: var(--primary); font-weight: 700; }
 
