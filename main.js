@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const blogWrapper = document.getElementById('blog-wrapper');
-    const videoContainer = document.getElementById('video-container'); // Videolar için eklendi
+    const videoContainer = document.getElementById('video-container');
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
     const searchInput = document.getElementById('search-input');
@@ -80,15 +80,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- GÜNCELLENMİŞ VİDEO RENDER FONKSİYONU ---
     function renderVideos(videos) {
         videos.forEach((video, index) => {
             const card = document.createElement('div');
             card.className = 'feature-card';
             card.style.opacity = '0';
             card.style.transition = 'opacity 0.5s ease';
+            
+            // Tıklanabilir kapak ve dinamik iframe oluşturma
             card.innerHTML = `
                 <h3>${video.title}</h3>
-                <iframe src="${video.link}" width="100%" height="250" frameborder="0" allowfullscreen></iframe>
+                <div class="video-wrapper" style="position:relative; cursor:pointer; background:#000;" 
+                     onclick="this.innerHTML='<iframe src=\\'${video.link}?autoplay=1\\' width=\\'100%\\' height=\\'250\\' frameborder=\\'0\\' allowfullscreen></iframe>'">
+                    <img src="${video.thumbnail}" style="width:100%; height:250px; object-fit:cover; display:block;">
+                    <div class="play-icon" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:50px; color:white; opacity:0.8;">▶</div>
+                </div>
             `;
             videoContainer.appendChild(card);
             setTimeout(() => { card.style.opacity = '1'; }, index * 100);
