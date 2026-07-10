@@ -24,22 +24,18 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
     }
 
+    // --- ARAMA MOTORU İÇİN ORTAK DEĞİŞKENLER ---
+    let allPosts = [];
+    let allVideos = [];
+
     // --- İNDİRMELER SİSTEMİ ---
     if (blogWrapper) {
         fetch('indir.json?t=' + new Date().getTime())
             .then(res => res.json())
             .then(data => {
                 if(data.adminConfig.canPost) {
-                    const activePosts = data.indir.filter(p => p.active !== false);
-                    renderPosts(activePosts);
-                    if (searchInput) {
-                        searchInput.addEventListener('input', (e) => {
-                            const val = e.target.value.toLowerCase().trim();
-                            const filtered = activePosts.filter(p => p.title.toLowerCase().includes(val));
-                            blogWrapper.innerHTML = "";
-                            filtered.length > 0 ? renderPosts(filtered) : blogWrapper.innerHTML = "<p style='color:#b0bec5; padding:20px;'>Sonuç bulunamadı.</p>";
-                        });
-                    }
+                    allPosts = data.indir.filter(p => p.active !== false);
+                    renderPosts(allPosts);
                 }
             });
     }
@@ -49,12 +45,30 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('videos.json?t=' + new Date().getTime())
             .then(res => res.json())
             .then(data => {
-                renderVideos(data);
-                window.filterVideos = (cat) => {
-                    videoContainer.innerHTML = "";
-                    renderVideos(cat === 'Hepsi' ? data : data.filter(v => v.category === cat));
-                };
+                allVideos = data;
+                renderVideos(allVideos);
             });
+    }
+
+    // --- CANLI ARAMA DİNLEYİCİSİ ---
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const val = e.target.value.toLowerCase().trim();
+
+            // İndirmeleri filtrele
+            if (blogWrapper) {
+                const filteredPosts = allPosts.filter(p => p.title.toLowerCase().includes(val));
+                blogWrapper.innerHTML = "";
+                filteredPosts.length > 0 ? renderPosts(filteredPosts) : blogWrapper.innerHTML = "<p style='color:#b0bec5; padding:20px;'>Sonuç bulunamadı.</p>";
+            }
+
+            // Videoları filtrele
+            if (videoContainer) {
+                const filteredVideos = allVideos.filter(v => v.title.toLowerCase().includes(val));
+                videoContainer.innerHTML = "";
+                renderVideos(filteredVideos);
+            }
+        });
     }
 
     function renderPosts(posts) {
