@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderVideos(videos) {
         videos.forEach((v, i) => {
             const card = document.createElement('div');
-            card.className = 'feature-card';
+            card.className = 'video-card';   // 'feature-card' yerine
             card.innerHTML = `
                 <h3>${v.title}</h3>
                 <div class="video-wrapper" onclick="this.innerHTML='<iframe src=\\'${v.link}?autoplay=1\\' width=\\'100%\\' height=\\'100%\\' frameborder=\\'0\\' allowfullscreen></iframe>'">
