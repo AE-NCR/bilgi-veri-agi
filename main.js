@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const style = document.createElement('style');
     style.innerHTML = `
         .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; padding: 20px; }
-        .feature-card { background: #121212; border: 1px solid #2a2a2a; border-radius: 12px; overflow: hidden; transition: 0.3s; opacity: 0; }
+        .feature-card { background: #121212; border: 1px solid #2a2a2a; border-radius: 12px; overflow: hidden; transition: 0.3s; }
         .feature-card.visible { opacity: 1; }
         .feature-card:hover { border-color: #444; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
         .feature-card h3 { padding: 15px; margin: 0; color: #e0e0e0; font-family: sans-serif; font-size: 1.1rem; }
