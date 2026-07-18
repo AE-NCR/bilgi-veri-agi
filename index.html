@@ -107,6 +107,37 @@
             color: var(--secondary);
         }
 
+        .mini-logo-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+            background: var(--card-bg);
+            border: 1px solid #1a2e23;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 3rem;
+            transition: var(--transition);
+        }
+
+        .mini-logo-link:hover {
+            border-color: var(--secondary);
+            background: #16211c;
+        }
+
+        .mini-logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .mini-logo-link span {
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -156,6 +187,11 @@
             <a href="indir.html" class="btn-primary">Paylaşılan Dosyaları Gör 📁</a>
         </section>
 
+        <a href="videolar.html" class="mini-logo-link">
+            <img src="logo.png" alt="Videolar" class="mini-logo-img">
+            <span>Videoları Keşfet</span>
+        </a>
+
         <div class="features-grid">
             <div class="feature-card">
                 <h3>🫧Reklamsız ve Açık Kaynaklı</h3>
@@ -180,7 +216,7 @@
     <p>Sitemizde paylaşılmasını istediğiniz dosyaları, videoları veya rehberleri bize ileterek Bilgi-Veri Ağı'nın büyümesine katkıda bulunabilirsiniz.</p>
     <p>Önerilerinizi şu iki e-posta adresimizden birine gönderebilirsiniz:</p>
     <ul style="list-style: none; padding: 0;">
-        <li>📧 <strong>E-posta 1:</strong> <a href="mailto:seninmailin@site.com">seninmailin@site.com</a></li>
+        <li>📧 <strong>E-posta 1:</strong> <a href="mailto:bilgiveriagi1@gmail.com">seninmailin@site.com</a></li>
         <li>📧 <strong>E-posta 2:</strong> <a href="mailto:gmailadresin@gmail.com">gmailadresin@gmail.com</a></li>
     </ul>
     <p><small><em>*Önerilerinize dosya ismi, link ve kısa bir açıklama eklemeyi unutmayın!</em></small></p>
