@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoContainer = document.getElementById('video-container');
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
-    const searchInput = document.getElementById('search-input'); // HTML'deki input id'sinin "search-input" olduğundan emin ol!
+    const searchInput = document.getElementById('video-search'); // HTML'deki input id'sinin "search-input" olduğundan emin ol!
 
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
