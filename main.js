@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoContainer = document.getElementById('video-container');
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
-    const searchInput = document.getElementById('video-search'); // HTML'deki input id'sinin "search-input" olduğundan emin ol!
+    const searchInput = document.getElementById('video-search');
 
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
@@ -50,10 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    // --- CANLI ARAMA DİNLEYİCİSİ ---
+    // --- CANLI ARAMA DİNLEYİCİSİ (GÜNCELLENDİ) ---
     if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            const val = e.target.value.toLowerCase().trim();
+        const handleSearch = () => {
+            const val = searchInput.value.toLowerCase().trim();
 
             // İndirmeleri filtrele
             if (blogWrapper) {
@@ -76,7 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     videoContainer.innerHTML = "<p style='color:#b0bec5; padding:20px;'>Video bulunamadı.</p>";
                 }
             }
-        });
+        };
+
+        searchInput.addEventListener('input', handleSearch);
+        searchInput.addEventListener('keyup', handleSearch);
     }
 
     function renderPosts(posts) {
