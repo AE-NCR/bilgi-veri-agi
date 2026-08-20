@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoContainer = document.getElementById('video-container');
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
-    const searchInput = document.getElementById('search-input');
+    const searchInput = document.getElementById('search-input'); // HTML'deki input id'sinin "search-input" olduğundan emin ol!
 
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
@@ -59,14 +59,22 @@ document.addEventListener('DOMContentLoaded', () => {
             if (blogWrapper) {
                 const filteredPosts = allPosts.filter(p => p.title.toLowerCase().includes(val));
                 blogWrapper.innerHTML = "";
-                filteredPosts.length > 0 ? renderPosts(filteredPosts) : blogWrapper.innerHTML = "<p style='color:#b0bec5; padding:20px;'>Sonuç bulunamadı.</p>";
+                if (filteredPosts.length > 0) {
+                    renderPosts(filteredPosts);
+                } else {
+                    blogWrapper.innerHTML = "<p style='color:#b0bec5; padding:20px;'>Sonuç bulunamadı.</p>";
+                }
             }
 
             // Videoları filtrele
             if (videoContainer) {
                 const filteredVideos = allVideos.filter(v => v.title.toLowerCase().includes(val));
                 videoContainer.innerHTML = "";
-                renderVideos(filteredVideos);
+                if (filteredVideos.length > 0) {
+                    renderVideos(filteredVideos);
+                } else {
+                    videoContainer.innerHTML = "<p style='color:#b0bec5; padding:20px;'>Video bulunamadı.</p>";
+                }
             }
         });
     }
@@ -84,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderVideos(videos) {
         videos.forEach((v, i) => {
             const card = document.createElement('div');
-            card.className = 'video-card';   // 'feature-card' yerine
+            card.className = 'video-card';
             card.innerHTML = `
                 <h3>${v.title}</h3>
                 <div class="video-wrapper" onclick="this.innerHTML='<iframe src=\\'${v.link}?autoplay=1\\' width=\\'100%\\' height=\\'100%\\' frameborder=\\'0\\' allowfullscreen></iframe>'">
