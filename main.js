@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoContainer = document.getElementById('video-container');
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
-    const searchInput = document.getElementById('video-search');
-
+    const searchInput = document.getElementById('video-search') || document.getElementById('search-input');
+    
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
     }
