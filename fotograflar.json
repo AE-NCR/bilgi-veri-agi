@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "baslik": "Türk Bayrağı",
+    "url": "images/tr-bayrak.jpg",
+    "aciklama": "Türk bayrağı"
+  },
+  {
+    "id": 2,
+    "baslik": "Atatürk Resmi",
+    "url": "images/ataturk.jpg",
+    "aciklama": "Atatürk resmi"
+  }
+]
